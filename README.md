@@ -18,7 +18,37 @@ An attacker can create `~/.config/omarchy/dell-haptic.conf` -> `/etc/passwd` wit
 
 The affected code in the ALPM `post_install` and `post_upgrade` hooks:
 
+```bash
+_ensure_user_config() {
+  local user=$1
+  local home=$2
+  local config_dir="$home/.config/omarchy"
+  local config_path="$config_dir/dell-haptic.conf"
 
+  if [[ ! -f $config_path ]] && ! env HOME="$home" USER="$user" LOGNAME="$user" \
+    /usr/bin/dell-xps-touchpad-haptics set "$_default_level"; then
+    echo ":: Failed to create ${config_path} for user '$user'." >&2
+    return 1
+  fi
+
+  if [[ -f $config_path ]]; then
+    chown "$user:$user" "$home/.config" 2>/dev/null || true
+    chown "$user:$user" "$config_dir" 2>/dev/null || true
+    chown "$user:$user" "$config_path" 2>/dev/null || true
+  fi
+}
+```
+The helper is reachable from both hooks:
+
+```bash
+post_install() {
+  _configure_package
+}
+
+post_upgrade() {
+  _configure_package
+}
+```
 
 ## PoC
 1. A user with uid 1000 creates the symbolic link without sudo
