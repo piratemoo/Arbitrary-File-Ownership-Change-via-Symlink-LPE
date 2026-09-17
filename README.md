@@ -2,7 +2,9 @@
 
 **dell-xps-touchpad-haptics 1.0.0-3, Omarchy 4.0.4**<br>
 A local unprivileged user can abuse the install script and escalate privileges after the package installs/upgrades
-<br>
+<br><br>
+Severity: High  
+CVSS 3.1 Base Score: 7.8 (Local/Low Complexity/No Privileges Required)<br><br>
 •	Improper Link Resolution Before File Access (CWE-59) <br>
 •	**TOCTOU** (Time-of-check Time-of-use) Race Condition (CWE-367)<br>
 
