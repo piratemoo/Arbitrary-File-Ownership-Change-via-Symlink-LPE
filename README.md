@@ -6,6 +6,9 @@ CVSS 3.1 Base Score: 7.8 (Local/Low Complexity/No Privileges Required)<br><br>
 •	Improper Link Resolution Before File Access (CWE-59) <br>
 •	**TOCTOU** (Time-of-check Time-of-use) Race Condition (CWE-367)<br>
 
+<img width="800" height="403" alt="moopoc" src="https://github.com/user-attachments/assets/e8300cbe-5b36-4aa2-80d0-7a899152cc10" />
+
+
 ## Summary
 The ALPM install script for dell-xps-touchpad-haptics performs privileged chown operations on `~/.config/omarchy/dell-haptic.conf` and before changing ownership, checks the path using `-f` and the subsequent chown symbolic links. An unprivileged local user can replace `dell-haptic.conf` with a symbolic link to a root-owned file like `/etc/passwd` and on the next package install/upgrade, the script executes as root, follows the symbolic link and changes file ownership to the selected user. 
 
