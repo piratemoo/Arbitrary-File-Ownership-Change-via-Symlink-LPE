@@ -6,7 +6,7 @@ CVSS 3.1 Base Score: 7.8 (Local/Low Complexity/No Privileges Required)<br><br>
 •	Improper Link Resolution Before File Access (CWE-59) <br>
 •	**TOCTOU** (Time-of-check Time-of-use) Race Condition (CWE-367)<br>
 
-<img width="800" height="403" alt="moopoc" src="https://github.com/user-attachments/assets/e8300cbe-5b36-4aa2-80d0-7a899152cc10" />
+<img width="600" height="303" alt="moopoc" src="https://github.com/user-attachments/assets/e8300cbe-5b36-4aa2-80d0-7a899152cc10" />
 
 
 ## Summary
